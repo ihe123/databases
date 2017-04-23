@@ -1,6 +1,8 @@
-CREATE DATABASE myChat1;
+DROP DATABASE chat;
 
-USE myChat1;
+CREATE DATABASE chat;
+
+USE chat;
 
 CREATE TABLE users (
 	id INTEGER PRIMARY KEY,
@@ -8,27 +10,21 @@ CREATE TABLE users (
  /* Describe your table here.*/
 );
 
-CREATE TABLE messages (
-	id INTEGER PRIMARY KEY,
-  message TEXT NOT NULL,
-  user INTEGER,
-  FOREIGN KEY(user) REFERENCES users(id)
-);
-
 CREATE TABLE rooms (
   id INTEGER PRIMARY KEY,
   room TEXT NOT NULL
 );
 
-CREATE TABLE connection (
-  id INTEGER PRIMARY KEY,
-  user_id INTEGER,
-  FOREIGN KEY(user_id) REFERENCES users(id),
-  message_id INTEGER,
-  FOREIGN KEY(message_id) REFERENCES messages(id),
-  room_id INTEGER,
-  FOREIGN KEY(room_id) REFERENCES rooms(id)
+CREATE TABLE messages (
+	id INTEGER PRIMARY KEY,
+  message TEXT NOT NULL,
+  user INTEGER,
+  FOREIGN KEY(user) REFERENCES users(id),
+  roomId INTEGER,
+  FOREIGN KEY(roomId) REFERENCES rooms(id)
 );
+
+
 
 
 /* Create other tables and define schemas for them here! */
